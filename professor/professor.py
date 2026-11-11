@@ -18,41 +18,39 @@ def main():
             try:
                 prompt = int(input(f'{question[0]} + {question[1]} = '))
             except ValueError:
-                pass
+                prompt = None
+            
             if prompt == answer:
                 score += 1
                 break
             if count == 3:
+                print('EEE')
                 print( f'{question[0]} + {question[1]} = {answer}')
                 break
         
             print('EEE')
             count += 1
 
-    return score
+    print(score)
 
 def get_level():
     while True:
         try:
             level = int(input("Level: "))
-            if level not in range(1, 4):
-                raise ValueError
-            
+            if level in range(1,4):
+                return level
         except ValueError:
-            print('Wrong input')
-        else:
-            return level
+            pass
 
 def generate_integer(level):
-
-        if level == 1:
-            integer = random.randrange(10)
-        if level == 2:
-            integer = random.randrange(10, 100)
-        if level == 3:
-            integer = random.randrange(100, 1000)
-
-        return integer
+    if level == 1:
+        return random.randint(0, 9)
+    elif level == 2:
+        return random.randint(10, 99)
+    elif level == 3:
+        return random.randint(100, 999)
+    else:
+        raise ValueError
 
 
 
