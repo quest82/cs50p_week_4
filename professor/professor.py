@@ -9,10 +9,27 @@ def main():
 
         questions.append((x, y))
 
-    
-    return questions
+    score = 0
+    for question in questions:
+        answer = question[0] + question[1]
 
+        count = 1
+        while True:
+            try:
+                prompt = int(input(f'{question[0]} + {question[1]} = '))
+            except ValueError:
+                pass
+            if prompt == answer:
+                score += 1
+                break
+            if count == 3:
+                print( f'{question[0]} + {question[1]} = {answer}')
+                break
+        
+            print('EEE')
+            count += 1
 
+    return score
 
 def get_level():
     while True:
