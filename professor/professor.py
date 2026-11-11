@@ -2,8 +2,16 @@ import random
 
 def main():
     level = get_level()
+    questions = []
+    while len(questions) < 10:
+        x = generate_integer(level)
+        y = generate_integer(level)
 
-    print(generate_integer(level))
+        questions.append((x, y))
+
+    
+    return questions
+
 
 
 def get_level():
@@ -29,7 +37,7 @@ def generate_integer(level):
     else:
         return integer
 
-main()
+
 
 if __name__ == "__main__":
-    main()
+    print(main())
