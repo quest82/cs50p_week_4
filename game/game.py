@@ -22,7 +22,4 @@ def game(val):
             elif int(guess) > secret_num:
                 print("Too large!")
          
-
-
-
 main()   
