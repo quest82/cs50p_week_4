@@ -4,16 +4,18 @@ import os
 from dotenv import load_dotenv
 
 def main(): 
+    
     try:
-        amount = sys.argv[1]
-        if not amount.isdigit():
-            raise ValueError
+        amount = float(sys.argv[1])
     except IndexError:
         print("Missing command-line argument")
     except ValueError:
-        print("Command-line argument is not a number")
-    
-    BITCOIN_DATA = get_JSON()
+        sys.exit("Command-line argument is not a number ")
+    else:
+        BITCOIN_DATA = get_JSON()
+        result = calc_bitcoin_price(BITCOIN_DATA["data"], amount)
+        print (result)
+
     
 
 def get_JSON(): # Gets the data on bitcoin from CapCoin
@@ -27,7 +29,12 @@ def get_JSON(): # Gets the data on bitcoin from CapCoin
     else:
         return crypto.json()
 
-# def calc_bitcoin_price(dictionary):
+def calc_bitcoin_price(data, amount):
+    total = round(amount * float(data['priceUsd']), 4)
+    return f"$ {total:,}"
+        
+
+
 
 
 main()
